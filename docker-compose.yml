@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  # TPP SERVER
+  tpp-server:
+    image: harbor.flexcore.mx/flexcore/com.mx.mifos.openbanking.tpp-server.master    
+    container_name: tpp-server
+    restart: always
+    ports:
+      - 8080:8080
+      - 80:8080
