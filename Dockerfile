@@ -1,5 +1,4 @@
-# =========================================
-FROM azul/zulu-openjdk-debian:11 as runner
+FROM azul/zulu-openjdk-debian:17 as runner
 
 RUN mkdir -p /app/libs
 
