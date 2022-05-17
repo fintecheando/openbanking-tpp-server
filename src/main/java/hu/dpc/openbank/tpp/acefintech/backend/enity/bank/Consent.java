@@ -14,7 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CONSENTS")
+@Table(name="consents")
 public class Consent {
     @Id
     @Column(name="ID")

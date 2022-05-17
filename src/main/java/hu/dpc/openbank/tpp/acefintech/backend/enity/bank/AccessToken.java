@@ -11,7 +11,7 @@ package hu.dpc.openbank.tpp.acefintech.backend.enity.bank;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ACCESS_TOKEN")
+@Table(name = "access_token")
 public class AccessToken {
     @Id
     @Column(name = "ID")

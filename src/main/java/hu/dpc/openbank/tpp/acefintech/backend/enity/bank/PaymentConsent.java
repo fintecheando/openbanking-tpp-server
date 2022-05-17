@@ -14,7 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PAYMENT_CONSENT")
+@Table(name = "payment_consent")
 public class PaymentConsent {
     @Id
     @Column(name = "BANKID", nullable = false)

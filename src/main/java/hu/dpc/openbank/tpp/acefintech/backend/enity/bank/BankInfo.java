@@ -17,7 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "BANKS")
+@Table(name = "banks")
 public class BankInfo {
     @Id
     @JsonProperty("BankId")
