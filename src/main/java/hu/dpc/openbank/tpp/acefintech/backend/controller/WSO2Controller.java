@@ -189,11 +189,12 @@ public class WSO2Controller {
         TokenManager tokenManager = tokenManagerCache.get(bankId);
         if (null == tokenManager) {
             try {
-                final BankInfo bankInfo = bankRepository.getOne(bankId);
+                final BankInfo bankInfo = bankRepository.getBankById(bankId);
                 if (null == bankInfo || !bankId.equals(bankInfo.getBankId())) {
                     // Testing result
                     throw new BankIDNotFoundException(bankId);
                 }
+                LOG.info("Bank: {}", bankInfo.getAccountsUrl());
                 final OAuthConfig oAuthConfig = new OAuthConfig(bankInfo);
                 tokenManager = new TokenManager(oAuthConfig);
                 tokenManagerCache.put(bankId, tokenManager);

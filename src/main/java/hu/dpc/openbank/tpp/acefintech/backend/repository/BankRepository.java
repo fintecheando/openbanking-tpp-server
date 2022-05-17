@@ -19,6 +19,10 @@ import java.util.List;
 @Repository
 public interface BankRepository extends JpaRepository<BankInfo, String> {
 
+
+    @Query("select bankInfo from BankInfo bankInfo where bankInfo.bankId = :bankId")
+    BankInfo getBankById(@Param("bankId") String bankId);
+
     /**
      * Get latest user level access token for a desired scope.
      *
