@@ -8,15 +8,18 @@
 
 package hu.dpc.openbank.tpp.acefintech.backend.enity.bank;
 
-import javax.persistence.*;
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import hu.dpc.openbank.tpp.acefintech.backend.enity.AbstractPersistableCustom;
 
 @Entity
 @Table(name = "access_token")
-public class AccessToken {
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue
-    private int    id;
+public class AccessToken extends AbstractPersistableCustom implements Serializable {
+
     @Column(name = "BANK_ID")
     private String bankId;
     @Column(name = "USERNAME")
@@ -29,14 +32,6 @@ public class AccessToken {
     private long   expires;
     @Column(name = "REFRESH_TOKEN")
     private String refreshToken;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(final int id) {
-        this.id = id;
-    }
 
     public String getBankId() {
         return bankId;
@@ -99,7 +94,7 @@ public class AccessToken {
     public String toString() {
         final StringBuilder sb = new StringBuilder(); sb.append("class AccessToken {\n");
 
-        sb.append("    id: ").append(id).append("\n"); sb.append("    bankId: ").append(bankId).append("\n");
+        sb.append("    id: ").append(getId()).append("\n"); sb.append("    bankId: ").append(bankId).append("\n");
         sb.append("    userName: ").append(userName).append("\n");
         sb.append("    accessToken: ").append(accessToken).append("\n");
         sb.append("    expires: ").append(expires).append("  expired: ").append(isExpired()).append("\n");

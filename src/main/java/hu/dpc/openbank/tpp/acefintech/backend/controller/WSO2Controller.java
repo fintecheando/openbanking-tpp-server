@@ -405,6 +405,8 @@ public class WSO2Controller {
                         System
                                 .currentTimeMillis());
 
+                accessTokenRepository.save(accessToken);
+
                 clientAccessTokenCache.put(bankId, accessToken);
             } else {
                 throw new APICallException(tokenResponse.getHttpRawContent());
