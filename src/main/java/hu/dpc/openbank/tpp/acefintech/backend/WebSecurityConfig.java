@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
     @Override
     protected void configure(final @NotNull HttpSecurity http) throws Exception {
 //@formatter:off
-        http.csrf().and() // enable it for support localhost develop
+        http.cors().and().csrf().disable() // enable it for support localhost develop
             .httpBasic().and().authorizeRequests()
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll() // enable it for support localhost develop
             .anyRequest().authenticated()

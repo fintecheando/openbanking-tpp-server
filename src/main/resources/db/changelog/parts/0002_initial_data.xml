@@ -23,7 +23,7 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
     <changeSet author="acefintech" id="tpp_0002_1">
-        <insert tableName="BANKS">
+        <insert tableName="banks">
             <column name="ID" value="2ebf6b62-069b-496b-89f1-c4b4b08e04ae"/>
             <column name="NAME" value="Lion"/>
             <column name="SHORTNAME" value="Lion"/>
@@ -40,14 +40,14 @@
         </insert>
     </changeSet>
     <changeSet author="acefintech" id="tpp_0002_2">
-        <insert tableName="USERS">
+        <insert tableName="users">
             <column name="USERNAME" value="admin"/>
             <column name="PASSWORD" value="{bcrypt}$2a$10$FgRPdjDFcfxrCzWzVO/mZuWwVEm8CxqRNx4qQAOGVjzh/983lUPJy"/>
             <column name="ENABLED" valueBoolean="true"/>
         </insert>
     </changeSet>
     <changeSet author="acefintech" id="tpp_0002_3">
-        <insert tableName="AUTHORITIES">
+        <insert tableName="authorities">
             <column name="USERNAME" value="admin"/>
             <column name="AUTHORITY" value="ROLE_USER"/>
         </insert>
