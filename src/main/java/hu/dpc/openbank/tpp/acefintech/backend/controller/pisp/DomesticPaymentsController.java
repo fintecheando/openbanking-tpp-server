@@ -144,8 +144,8 @@ public class DomesticPaymentsController extends WSO2Controller {
 
         try {
             for (int ii = tryCount; 0 < ii--; ) {
-                final String   accessToken = getClientAccessToken(bankId, force);
-                final BankInfo bankInfo    = getTokenManager(bankId).getOauthconfig().getBankInfo();
+                final String accessToken = getClientAccessToken(bankId, force);
+                final BankInfo bankInfo = getTokenManager(bankId).getOauthconfig().getBankInfo();
                 // Setup HTTP headers
                 final Map<String, String> headers = new HashMap<>();
                 headers.put("Authorization", "Bearer " + accessToken);

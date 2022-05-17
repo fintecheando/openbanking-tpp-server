@@ -9,6 +9,7 @@
 package hu.dpc.openbank.tpp.acefintech.backend.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hu.dpc.common.http.HttpHelper;
 import hu.dpc.common.http.HttpResponse;
@@ -146,6 +147,7 @@ public class WSO2Controller {
                     throw new APICallException("Error creating JSON: " + e.getLocalizedMessage());
                 }
                 // get ConsentID
+                LOG.info("URL {}", bankInfo.getAccountsUrl());
                 final HttpResponse httpResponse = HttpHelper
                         .doAPICall(HttpMethod.POST, new URL(bankInfo.getAccountsUrl() + "/account-access-consents"),
                                 headers
@@ -169,10 +171,13 @@ public class WSO2Controller {
         } catch (final MalformedURLException mue) {
             LOG.error("URL problems!", mue);
             throw new BankConfigException(mue.getLocalizedMessage());
-        } catch (final Exception e) {
-            LOG.error("Process error!", e);
-            throw new BankConfigException(e.getLocalizedMessage());
-        }
+        } catch (final JsonMappingException mue) {
+            LOG.error("JSON problems!", mue);
+            throw new BankConfigException(mue.getLocalizedMessage());
+        } catch (final JsonProcessingException mue) {
+            LOG.error("JSON problems!", mue);
+            throw new BankConfigException(mue.getLocalizedMessage());
+        } 
     }
 
     /**
@@ -251,8 +256,9 @@ public class WSO2Controller {
             @Nullable final String jsonContent) {
         LOG.info("BankID: {} User {}", bankId, user);
         try {
-            final String userAccessToken = userAccessTokenIsValid(bankId, user.getUsername());
-            final BankInfo bankInfo = getTokenManager(bankId).getOauthconfig().getBankInfo();
+            final TokenManager tokenManager = getTokenManager(bankId);
+            String userAccessToken = userAccessTokenIsValid(bankId, user.getUsername());
+            final BankInfo bankInfo = tokenManager.getOauthconfig().getBankInfo();
 
             // Setup HTTP headers
             final HttpHeaders headers = new HttpHeaders();

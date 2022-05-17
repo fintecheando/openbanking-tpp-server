@@ -89,7 +89,7 @@ public class HttpHelper {
         for (int trycount = CONNECTION_REFUSED_TRYCOUNT; 0 < trycount--; ) {
             try {
                 LOG.info("doAPICall: {} {}", httpMethod.name(), url);
-                final HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+                final HttpURLConnection conn = getHttpConnection(url);
                 HttpsTrust.INSTANCE.trust(conn); conn.setReadTimeout(10000); conn.setConnectTimeout(15000);
                 conn.setRequestMethod(httpMethod.name()); conn.setDoInput(true);
                 final boolean hasContent = !(null == jsonContentData || jsonContentData.isEmpty());
@@ -142,6 +142,7 @@ public class HttpHelper {
      * @param content
      */
     public static void checkWSO2Errors(final String content) {
+        LOG.info("WS02 {}" + content);
         if (!content.isEmpty() && '<' == content.charAt(0)) {
             LOG.error("Respond in XML, it's mean something error occured! {}", content);
             if (BANK_NOT_WORKING_ERROR.equals(content)) {
@@ -152,5 +153,15 @@ public class HttpHelper {
                 throw new APICallException("API method not found!");
             } throw new APICallException("API gateway problem!");
         }
+    }
+
+    public static HttpURLConnection getHttpConnection(URL url) throws IOException {
+        HttpURLConnection conn;
+        if (url.getProtocol().equals("https")) {
+            conn = (HttpURLConnection) url.openConnection();
+        } else {
+            conn = (HttpsURLConnection) url.openConnection();
+        }
+        return conn;
     }
 }

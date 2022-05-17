@@ -22,12 +22,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 
-import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.ConnectException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -97,7 +97,7 @@ public class TokenManager {
                 final URL url = oauthconfig.getTokenURL();
 
                 LOG.info("Call {}", url);
-                final HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+                final HttpURLConnection conn = HttpHelper.getHttpConnection(url);
                 HttpsTrust.INSTANCE.trust(conn);
                 conn.setReadTimeout(10000);
                 conn.setConnectTimeout(15000);
