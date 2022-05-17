@@ -29,7 +29,7 @@ public interface BankRepository extends JpaRepository<BankInfo, String> {
             "from banks b\n" +
             "where b.id in (\n" +
             "    select distinct BANK_ID\n" +
-            "    from ACCESS_TOKEN\n" +
+            "    from access_token\n" +
             "    where USERNAME = :username)", nativeQuery = true)
     List<BankInfo> getUserConnectedBanks(@Param("username") String userName);
 }
