@@ -6,7 +6,7 @@
  * https://mozilla.org/MPL/2.0/.
  */
 
-package hu.dpc.openbank.tpp.acefintech.backend.repository;
+package hu.dpc.openbank.tpp.acefintech.backend.exceptions;
 
 public class BankConfigException extends RuntimeException {
     public BankConfigException(final String message) {

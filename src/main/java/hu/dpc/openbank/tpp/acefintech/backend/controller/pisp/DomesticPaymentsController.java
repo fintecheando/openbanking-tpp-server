@@ -16,7 +16,7 @@ import hu.dpc.openbank.exceptions.APICallException;
 import hu.dpc.openbank.tpp.acefintech.backend.controller.WSO2Controller;
 import hu.dpc.openbank.tpp.acefintech.backend.enity.bank.BankInfo;
 import hu.dpc.openbank.tpp.acefintech.backend.enity.bank.PaymentConsent;
-import hu.dpc.openbank.tpp.acefintech.backend.repository.BankConfigException;
+import hu.dpc.openbank.tpp.acefintech.backend.exceptions.BankConfigException;
 import hu.dpc.openbank.tpp.acefintech.backend.repository.PaymentConsentRepository;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;

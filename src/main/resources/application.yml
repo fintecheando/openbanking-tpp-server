@@ -1,0 +1,48 @@
+
+spring:
+  main:
+    allow-circular-references: true
+  jpa:
+    show-sql: true
+    properties:
+      eclipselink:
+        logging:
+          logger: "org.apache.fineract.paymenthub.importer.config.EclipselinkLogger"
+    open-in-view: false
+  jmx:
+    enabled: false
+  datasource:
+    hikari:
+      driverClassName: ${FINERACT_HIKARI_DRIVER_SOURCE_CLASS_NAME:com.mysql.cj.jdbc.Driver}
+      jdbcUrl: ${FINERACT_HIKARI_JDBC_URL:jdbc:mysql://localhost:3306/acefintech}
+      username: ${FINERACT_HIKARI_USERNAME:root}
+      password: ${FINERACT_HIKARI_PASSWORD:mysql}
+      minimumIdle: ${FINERACT_HIKARI_MINIMUM_IDLE:3}
+      maximumPoolSize: ${FINERACT_HIKARI_MAXIMUM_POOL_SIZE:10}
+      idleTimeout: ${FINERACT_HIKARI_IDLE_TIMEOUT:60000}
+      connectionTimeout: ${FINERACT_HIKARI_CONNECTION_TIMEOUT:20000}
+      connectionTestquery: ${FINERACT_HIKARI_TEST_QUERY:SELECT 1}
+      autoCommit: ${FINERACT_HIKARI_AUTO_COMMIT:true}
+      dataSourceProperties['cachePrepStmts']: ${FINERACT_HIKARI_DS_PROPERTIES_CACHE_PREP_STMTS:true}
+      dataSourceProperties['prepStmtCacheSize']: ${FINERACT_HIKARI_DS_PROPERTIES_PREP_STMT_CACHE_SIZE:250}
+      dataSourceProperties['prepStmtCacheSqlLimit']: ${FINERACT_HIKARI_DS_PROPERTIES_PREP_STMT_CACHE_SQL_LIMIT:2048}
+      dataSourceProperties['useServerPrepStmts']: ${FINERACT_HIKARI_DS_PROPERTIES_USE_SERVER_PREP_STMTS:true}
+      dataSourceProperties['useLocalSessionState']: ${FINERACT_HIKARI_DS_PROPERTIES_USE_LOCAL_SESSION_STATE:true}
+      dataSourceProperties['rewriteBatchedStatements']: ${FINERACT_HIKARI_DS_PROPERTIES_REWRITE_BATCHED_STATEMENTS:true}
+      dataSourceProperties['cacheResultSetMetadata']: ${FINERACT_HIKARI_DS_PROPERTIES_CACHE_RESULT_SET_METADATA:true}
+      dataSourceProperties['cacheServerConfiguration']: ${FINERACT_HIKARI_DS_PROPERTIES_CACHE_SERVER_CONFIGURATION:true}
+      dataSourceProperties['elideSetAutoCommits']: ${FINERACT_HIKARI_DS_PROPERTIES_ELIDE_SET_AUTO_COMMITS:true}
+      dataSourceProperties['maintainTimeStats']: ${FINERACT_HIKARI_DS_PROPERTIES_MAINTAIN_TIME_STATS:false}
+      dataSourceProperties['logSlowQueries']: ${FINERACT_HIKARI_DS_PROPERTIES_LOG_SLOW_QUERIES:true}
+      dataSourceProperties['dumpQueriesOnException']: ${FINERACT_HIKARI_DS_PROPERTIES_DUMP_QUERIES_IN_EXCEPTION:true}
+
+
+server:
+  port: 8243
+  servlet:
+    context-path: ${FINERACT_SERVER_SERVLET_CONTEXT_PATH:/}
+
+
+logging:
+  level:
+    root: ${FINERACT_CONSOLE_LOG:ERROR}

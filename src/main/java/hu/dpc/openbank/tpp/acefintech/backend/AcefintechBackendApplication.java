@@ -9,16 +9,20 @@
 package hu.dpc.openbank.tpp.acefintech.backend;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@SpringBootApplication(scanBasePackages = "hu.dpc")
+@SpringBootApplication
+@ComponentScan(basePackages = "hu.dpc")
 @EnableTransactionManagement
+@EnableWebSecurity
+@EnableAutoConfiguration
 public class AcefintechBackendApplication {
 
     public static void main(final String[] args) {
         SpringApplication.run(AcefintechBackendApplication.class, args);
     }
-
-
 }
