@@ -45,6 +45,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
         http.cors().and().csrf().disable() // enable it for support localhost develop
             .httpBasic().and().authorizeRequests()
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll() // enable it for support localhost develop
+            .antMatchers("/token/**").permitAll() //
+            .antMatchers("/actuator/**").permitAll() //
             .anyRequest().authenticated()
             .and().formLogin().loginPage("/netbank/login")
             .and().logout().permitAll();

@@ -26,7 +26,7 @@ public interface AccessTokenRepository extends JpaRepository<AccessToken, String
      * @return
      */
     @Query(value = "select a.*\n" //
-            + "      from ACCESS_TOKEN a\n" //
+            + "      from access_token a\n" //
             + "      where a.USERNAME = :username\n" //
             + "        and a.BANK_ID = :bankid\n" //
             + "        and a.ACCESS_TOKEN_TYPE = 'user'", nativeQuery = true)
@@ -41,7 +41,7 @@ public interface AccessTokenRepository extends JpaRepository<AccessToken, String
      */
     @Transactional
     @Modifying(clearAutomatically = true, flushAutomatically = true)
-    @Query(value = "delete from ACCESS_TOKEN a\n" //
+    @Query(value = "delete from access_token a\n" //
             + "      where USERNAME = :username\n" //
             + "        and BANK_ID = :bankid\n"  //
             + "        and ACCESS_TOKEN_TYPE = 'user'", nativeQuery = true)

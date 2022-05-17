@@ -26,7 +26,7 @@ public interface BankRepository extends JpaRepository<BankInfo, String> {
      * @return
      */
     @Query(value = "select *\n" +
-            "from BANKS b\n" +
+            "from banks b\n" +
             "where b.id in (\n" +
             "    select distinct BANK_ID\n" +
             "    from ACCESS_TOKEN\n" +

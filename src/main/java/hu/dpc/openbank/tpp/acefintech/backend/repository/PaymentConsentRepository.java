@@ -24,7 +24,7 @@ public interface PaymentConsentRepository extends JpaRepository<PaymentConsent, 
      * @return
      */
     @Query(value = "select *\n" +
-            "from PAYMENT_CONSENT \n" +
+            "from payment_consent \n" +
             "where BANKID = :bankid\n" +
             "  and CONSENTID = :consentId", nativeQuery = true)
     PaymentConsent getConsent(@Param("bankid") String bankId, @Param("consentId") String consentId);
