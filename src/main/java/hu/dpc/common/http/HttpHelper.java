@@ -158,9 +158,9 @@ public class HttpHelper {
     public static HttpURLConnection getHttpConnection(URL url) throws IOException {
         HttpURLConnection conn;
         if (url.getProtocol().equals("https")) {
-            conn = (HttpURLConnection) url.openConnection();
-        } else {
             conn = (HttpsURLConnection) url.openConnection();
+        } else {
+            conn = (HttpURLConnection) url.openConnection();
         }
         return conn;
     }

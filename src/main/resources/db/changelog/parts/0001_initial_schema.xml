@@ -61,7 +61,7 @@
     </changeSet>
     <changeSet author="acefintech" id="tpp_0001_3">
         <createTable tableName="banks">
-            <column name="ID" type="VARCHAR(64)">
+            <column name="ID" type="VARCHAR(255)">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="NAME" type="VARCHAR(64)" >

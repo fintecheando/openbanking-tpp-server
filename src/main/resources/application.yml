@@ -46,3 +46,18 @@ server:
 logging:
   level:
     root: ${FINERACT_CONSOLE_LOG:ERROR}
+
+
+tpp:
+  default:
+    entity:
+      name: ${TPP_DEFAULT_ENTITY_NAME:Lion}
+      shortname: ${TPP_DEFAULT_ENTITY_SHORTNAME:Lion}
+      longname: ${TPP_DEFAULT_ENTITY_LONGNAME:Lion Bank Ltd.}
+      logourl: ${TPP_DEFAULT_ENTITY_LOGOURL:/netbank/images/bank/lion.svg}
+    host: 
+      api: ${TPP_DEFAULT_HOST_API:https://apis.tiermoney.com:8243}
+      client: ${TPP_DEFAULT_HOST_CLIENT:https://tpp.tiermoney.com}
+    access:
+      user: ${TPP_DEFAULT_ACCESS_USER:uTPfDYV8yXDWQFyOBge5VItPaowa}
+      pass: ${TPP_DEFAULT_ACCESS_PASS:EvVLcofOKNIO0AAs7Mu_Onc_DCga}
