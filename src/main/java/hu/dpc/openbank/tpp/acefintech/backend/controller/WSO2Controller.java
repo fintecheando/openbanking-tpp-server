@@ -122,8 +122,12 @@ public class WSO2Controller {
 
         try {
             for (int ii = tryCount; 0 < ii--;) {
+                LOG.info("bankId "+bankId);
+                LOG.info("force "+force);
                 final String accessToken = getClientAccessToken(bankId, force);
+                LOG.info("accessToken "+accessToken);
                 final BankInfo bankInfo = getTokenManager(bankId).getOauthconfig().getBankInfo();
+                LOG.info("bankInfo "+bankInfo);
                 // Setup HTTP headers
                 final HttpHeaders headers = new HttpHeaders();
                 headers.setBearerAuth(accessToken);
