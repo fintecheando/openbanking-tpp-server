@@ -23,20 +23,27 @@
     <!-- see https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-custom-log-configuration
          and https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot/src/main/resources/org/springframework/boot/logging/logback -->
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%clr(%d{HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([%35.35t]){faint} %clr(%-28.28logger{28}){cyan} %clr(:){faint}%X{BUSINESS-LOG} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
 
-    <appender name="CONSOLE" target="System.out" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
         </encoder>
     </appender>
 
     <!-- See https://github.com/apache/fineract/#logging-guidelines for why by default we log only to INFO, only (WARN and) ERROR
          but it's still possible to override this using java -Dlogging.level.root=info -jar fineract-provider.jar, as per https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-custom-log-levels -->
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="CONSOLE" />
     </root>
 
     <!-- But these three INFO are still handy ;-) just to see when it's up and running -->
+    <logger name="hu.dpc" level="DEBUG"/>
+    <logger name="io" level="INFO"/>
+    <logger name="org" level="INFO"/>
     <logger name="org.springframework.boot.web.embedded.tomcat.TomcatWebServer" level="DEBUG" />
     <logger name="org.apache.fineract.ServerApplication" level="DEBUG" />
     <logger name="liquibase" level="info" />
